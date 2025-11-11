@@ -1,0 +1,442 @@
+/* ===========================
+   style.css — Магазин одежды
+   (только код, адаптивные цвета для
+   телефон / планшет / ПК)
+   =========================== */
+
+/* ----- Сброс и базовые настройки ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+:root {
+  /* mobile-first (по умолчанию — телефон) */
+  --primary: #5c4239;      /* нежно-розовый основной */
+  --accent:  #9c7767;      /* яркий акцент */
+  --bg:      #fff5f9;      /* фоновый очень светлый розовый */
+  --muted:   #f7dce6;      /* карточки / поверх */
+  --text:    #3b2e21;      /* тёмный контрастный текст */
+  --card-shadow: 0 6px 18px rgba(59,33,48,0.08);
+  --glass: rgba(255,255,255,0.6);
+  --radius: 14px;
+  --max-width: 1200px;
+
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg), #fff);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ----- Контейнер ----- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ----- Шапка и навигация ----- */
+header {
+  background: linear-gradient(90deg, rgba(255,255,255,0.65), rgba(255,255,255,0.35));
+  backdrop-filter: blur(6px);
+  border-radius: calc(var(--radius) - 4px);
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  box-shadow: var(--card-shadow);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+.logo .mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  display: inline-grid;
+  place-items: center;
+  color: white;
+  font-weight: 800;
+  box-shadow: 0 6px 14px rgba(255,121,176,0.18);
+}
+
+/* Навигация */
+nav.nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all .18s ease;
+}
+
+.nav a:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15));
+  box-shadow: 0 6px 18px rgba(59,33,48,0.06);
+}
+
+/* Иконка-бургер для мобильной навигации (видна по необходимости в HTML) */
+.burger {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(59,33,48,0.06);
+}
+
+/* ----- Hero (главный баннер) ----- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+  box-shadow: var(--card-shadow);
+}
+
+.hero-left {
+  padding: 8px 6px;
+}
+
+.h-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #3a1630;
+}
+
+.h-sub {
+  color: #6a3a4a;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+/* CTA */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  color: white;
+  box-shadow: 0 8px 18px rgba(255,121,176,0.22);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px rgba(255,121,176,0.25);
+}
+
+/* Hero image placeholder */
+.hero-image {
+  width: 100%;
+  min-height: 200px;
+  border-radius: 12px;
+  background-image: linear-gradient(135deg, rgba(255,121,176,0.12), rgba(255,182,213,0.12));
+  display: grid;
+  place-items: center;
+  color: #7a3a4a;
+  font-weight: 700;
+}
+
+/* ----- Фильтры / товары ----- */
+.controls {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 1 1 220px;
+  min-width: 160px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(59,33,48,0.06);
+  background: var(--glass);
+}
+
+/* Карточки товаров */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), var(--muted));
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  align-items: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 36px rgba(59,33,48,0.09);
+}
+
+.card .thumb {
+  flex: 0 0 110px;
+  height: 110px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 -6px 18px rgba(255,255,255,0.06);
+}
+
+.card .info {
+  flex: 1;
+}
+
+.card .title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card .price {
+  font-weight: 800;
+  color: #6a1840;
+}
+
+/* ----- Сетка карточек (адаптивность) ----- */
+/* Телефон: одна колонка (уже по умолчанию) */
+
+/* ----- Подвал ----- */
+footer {
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: calc(var(--radius) - 6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  color: #5a2a3a;
+  font-weight: 600;
+}
+
+/* ----- Мелкие элементы и утилиты ----- */
+.kicker {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,121,176,0.12);
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+/* ----- Переходы и фокус ----- */
+a, button, input {
+  transition: all .16s ease;
+  outline: none;
+}
+
+input:focus, button:focus, a:focus {
+  box-shadow: 0 6px 18px rgba(59,33,48,0.06);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   MEDIA QUERIES — планшет и ПК
+   Изменяем переменные цветов и layout
+   =========================== */
+
+/* ПЛАНШЕТ: от 600px до 1023px */
+@media (min-width: 600px) {
+  :root {
+    /* другой розовый тон для планшета — персиково-розовый */
+    --primary: #8bacc3;
+    --accent:  #3a5573;
+    --bg:      #fff0f6;
+    --muted:   #ffe8f0;
+    --text:    #20293a;
+    --card-shadow: 0 10px 28px rgba(58,26,40,0.06);
+  }
+
+  /* Увеличим базовый размер шрифтов для планшета */
+  :root { font-size: 17px; }
+
+  /* Hero — двухколоночный: текст + изображение */
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+  }
+
+  .hero-image { min-height: 260px; border-radius: 16px; }
+
+  /* Сетка продуктов — 2 колонки */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .card .thumb {
+    flex: 0 0 140px;
+    height: 140px;
+    border-radius: 12px;
+  }
+
+  .header-inner { gap: 20px; }
+}
+
+/* ПК/Большие экраны: от 1024px */
+@media (min-width: 1024px) {
+  :root {
+    /* другой оттенок розового для ПК — пудрово-розовый с приглушённым акцентом */
+    --primary: #ffd6e8;
+    --accent:  #ff3f8e;
+    --bg:      #fff9fb;
+    --muted:   #fff0f6;
+    --text:    #2f1723;
+    --card-shadow: 0 18px 40px rgba(47,23,35,0.08);
+    --max-width: 1400px;
+    font-size: 18px;
+  }
+
+  body {
+    padding: 40px;
+  }
+
+  header {
+    padding: 16px 20px;
+  }
+
+  .hero {
+    grid-template-columns: 1.1fr .9fr;
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .h-title {
+    font-size: 2.2rem;
+  }
+
+  .h-sub {
+    font-size: 1.05rem;
+  }
+
+  /* Сетка продуктов — 3 колонки */
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .card .thumb {
+    flex: 0 0 160px;
+    height: 160px;
+    border-radius: 14px;
+  }
+
+  .controls {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ----- Доп. улучшения для больших экранов: визуальные акценты ----- */
+@media (min-width: 1200px) {
+  .hero {
+    padding: 36px;
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  .h-title {
+    font-size: 2.6rem;
+  }
+
+  .btn {
+    padding: 12px 22px;
+    border-radius: 14px;
+  }
+}
+
+/* ====== Небольшие адаптивные правки ====== */
+/* Скрывать длинную навигацию на очень маленьких экранах (ожидается бургер в HTML) */
+@media (max-width: 520px) {
+  nav.nav { display: none; }
+  .burger { display: inline-grid; }
+}
+
+/* Активные состояния карточек: пометка "Новинка" */
+.card .badge {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  background: linear-gradient(90deg, rgba(255,121,176,0.15), rgba(255,255,255,0.05));
+  color: var(--accent);
+}
+
+/* Крошечная утилита: центрирование контента при пустых состояниях */
+.center-empty {
+  display: grid;
+  place-items: center;
+  padding: 40px;
+  color: #6a3a4a;
+}
+
+/* ===== Accessibility tweaks ===== */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+
+/* Конец style.css */
